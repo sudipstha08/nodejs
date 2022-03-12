@@ -1,0 +1,55 @@
+const express = require('express')
+const router = express.Router()
+
+router.get('/', (req, res) =>{
+  res.send('Users list')
+})
+
+router.get('/new', (req, res) => {
+  res.send('Users new Form')
+})
+
+router.post('/', (req,res) => {
+  res.send('Create user')
+})
+
+// router.get('/:id', (req, res) => {
+//   // req.params.id
+//   res.send(`User fetched with ${req.params.id}`)
+// })
+
+// router.put('/:id', (req, res) => {
+//   // req.params.id
+//   res.send(`Edit fetched with ${req.params.id}`)
+// })
+
+// router.delete('/:id', (req, res) => {
+//   // req.params.id
+//   res.send(`Delete fetched with ${req.params.id}`)
+// })
+
+// Grouping routes
+router
+  .route("/:id")
+  .get((req, res) => {
+    console.log("user", req.user)
+    res.send(`Get user with ${req.params.id}`)
+  })
+  .put((req, res) => {
+  // req.params.id
+  res.send(`Edit fetched with ${req.params.id}`)
+  })
+  .delete((req, res) => {
+  // req.params.id
+  res.send(`Delete fetched with ${req.params.id}`)
+  })
+
+  const users = [{ name: "Sudip"}, { name: "Jack"}, { name: 'Micheal' } ]
+  // Runs when it finds the specified params. It is a type of middleware
+  router.param("id", (req, res, next, id) => {
+    console.log("id", id)
+    req.user = users[id]
+    next()
+  })
+
+module.exports = router

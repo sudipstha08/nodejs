@@ -5,12 +5,21 @@ router.get('/', (req, res) =>{
   res.send('Users list')
 })
 
-router.get('/new', (req, res) => {
-  res.send('Users new Form')
-})
+// router.get('/new', (req, res) => {
+//   res.send('Users new Form')
+// })
 
 router.post('/', (req,res) => {
-  res.send('Create user')
+  const isValid = false
+  if(isValid) {
+    users.push({ firstName: req.body.firstName })
+    res.redirect(`/users/${users.length - 1}`)
+  } else {
+    console.log("Error")
+    res.render('users/new', { firstName: req.body.firstName })
+  }
+  // console.log("formData", req.body.firstName)
+  // res.send('Created user')
 })
 
 // router.get('/:id', (req, res) => {
@@ -28,6 +37,10 @@ router.post('/', (req,res) => {
 //   res.send(`Delete fetched with ${req.params.id}`)
 // })
 
+ router.get("/new", (req, res) => {
+    res.render("users/new", { firstName: "Test" })
+  })
+
 // Grouping routes
 router
   .route("/:id")
@@ -43,6 +56,8 @@ router
   // req.params.id
   res.send(`Delete fetched with ${req.params.id}`)
   })
+
+ 
 
   const users = [{ name: "Sudip"}, { name: "Jack"}, { name: 'Micheal' } ]
   // Runs when it finds the specified params. It is a type of middleware

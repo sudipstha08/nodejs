@@ -3,6 +3,9 @@ const router = express.Router()
 router.use(postLogger)
 
 router.get('/', (req, res) =>{
+  // Access query params
+  const name = req.query.name
+  console.log("NAME ::", name)
   res.send('All posts')
 })
 

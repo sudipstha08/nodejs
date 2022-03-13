@@ -18,10 +18,22 @@ app.post("/",  async (req: Request, res: Response) => {
   res.json(user)
 })
 
-// Get user
+// Get All usera
 app.get("/",  async (req: Request, res: Response) => {
   const users = await prisma.user.findMany()
   res.json(users)
+})
+
+// Get single user
+app.get("/:id", async(req: Request, res: Response) => {
+  const id = req.params.id
+
+  const user = await prisma.user.findFirst({
+    where: {
+      id: Number(id)
+    }
+  })
+  res.json(user)
 })
 
 // Update user

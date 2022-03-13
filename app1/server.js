@@ -32,7 +32,7 @@ app.use('/users', userRouter)
 app.use('/posts', postsRouter)
 
 
-
+// logger
 function logger(req, res, next) {
   console.log(req.originalUrl)
   next()

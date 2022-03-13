@@ -5,9 +5,9 @@ router.get('/', (req, res) =>{
   res.send('Users list')
 })
 
-// router.get('/new', (req, res) => {
-//   res.send('Users new Form')
-// })
+  // router.get('/new', (req, res) => {
+  //   res.send('Users new Form')
+  // }) 
 
 router.post('/', (req,res) => {
   const isValid = false
@@ -56,8 +56,6 @@ router
   // req.params.id
   res.send(`Delete fetched with ${req.params.id}`)
   })
-
- 
 
   const users = [{ name: "Sudip"}, { name: "Jack"}, { name: 'Micheal' } ]
   // Runs when it finds the specified params. It is a type of middleware

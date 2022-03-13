@@ -18,9 +18,36 @@ app.post("/",  async (req: Request, res: Response) => {
   res.json(user)
 })
 
-// Get All usera
+// Create many cars
+app.post("/create-many-cars", async(req: Request, res: Response) => {
+  const { carList } = req.body
+  const cars = await prisma.car.createMany({
+    data: carList
+  })
+
+  res.json(cars)
+})
+
+// Create multiple users
+app.post("/create-multiple-users",  async (req: Request, res: Response) => {
+  const { userList } = req.body;
+  const users = await prisma.user.createMany({
+    data: userList
+  })
+  res.json(users)
+})
+
+// Get All users
 app.get("/",  async (req: Request, res: Response) => {
   const users = await prisma.user.findMany()
+  res.json(users)
+})
+
+// Get All users with cars
+app.get("/users/cars",  async (req: Request, res: Response) => {
+  const users = await prisma.user.findMany({
+    include: { cars: true }
+  })
   res.json(users)
 })
 
@@ -28,7 +55,7 @@ app.get("/",  async (req: Request, res: Response) => {
 app.get("/:id", async(req: Request, res: Response) => {
   const id = req.params.id
 
-  const user = await prisma.user.findFirst({
+  const user = await prisma.user.findUnique({
     where: {
       id: Number(id)
     }

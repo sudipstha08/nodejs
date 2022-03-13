@@ -13,7 +13,17 @@ datasource db {
 
 // User model
 model User {
-  id       Int    @default(autoincrement()) @id
+  id       Int    @id @default(autoincrement())
   username String @unique
   password String
+  cars      Car[]
+}
+
+// Car model
+model Car {
+  id     Int    @id @default(autoincrement())
+  model  String
+  year   Int
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int
 }

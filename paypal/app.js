@@ -74,6 +74,9 @@ app.get('/success', (req, res) => {
 		}]
 	}
 
+	/**
+	 * Payment is done to the business account selected during app creation
+	 */
 	paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
     if (error) {
         console.log(error.response);

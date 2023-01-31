@@ -10,7 +10,7 @@ paypal.configure({
 });
 
 const app = express()
-const PORT = 9000;
+const PORT = 9001;
 
 app.set('view engine', "ejs")
 
@@ -101,12 +101,16 @@ app.get("/cancel", (req, res) => res.status(200).send("Cancelled"))
  * Handle payouts
  */
 app.post('/payout', (req, res) => {
-	var sender_batch_id = Math.random().toString(36).substring(9);
+	/**
+	 * Same batch ID cannot be used for payout. 
+	 * It should be defined by you to prevent duplicate batch from being sent.
+	 */
+	var sender_batch_id = (Math.random() * 0xfffff * 1000000000).toString(16).slice(0, 13).toUpperCase()	
 
 	var create_payout_json = {
 			"sender_batch_header": {
 					"sender_batch_id": sender_batch_id,
-					"email_subject": "You have a payment for your sales"
+					"email_subject": "You have a payout for your sales"
 			},
 			"items": [
 					{
@@ -115,9 +119,9 @@ app.post('/payout', (req, res) => {
 									"value": 2,
 									"currency": "USD"
 							},
-							"receiver": "sb-je5vc24921338@personal.example.com",
+							"receiver": "sudipstha08@gmail.com",
 							"note": "Your sales has been paid",
-							"sender_item_id": "item_3"
+							"sender_item_id": "1346789987656"
 					}
 			]
 	};

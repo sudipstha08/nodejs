@@ -121,6 +121,9 @@ app.post('/payout', (req, res) => {
 							},
 							"receiver": "sudipstha08@gmail.com",
 							"note": "Your sales has been paid",
+							/**
+							 * Sender_Item_id => The sender specified ID number. Tracks the payout in the accounting system
+							 */
 							"sender_item_id": "1346789987656"
 					}
 			]
@@ -131,7 +134,7 @@ app.post('/payout', (req, res) => {
 	paypal.payout.create(create_payout_json, sync_mode, function (error, payout) {
 			if (error) {
 					console.log(error.response);
-					res.status(400).send("Error occured", error)
+					res.status(400).send("Error occured")
 			} else {
 					console.log("Create Single Payout Response");
 					console.log(payout);

@@ -1,5 +1,6 @@
 const express = require('express')
-const paypal = require('paypal-rest-sdk')
+const paypal = require('paypal-rest-sdk');
+const { sendPayout, getPayout } = require('./controllers/index.js');
 require('ejs')
 require('dotenv').config()
 
@@ -100,49 +101,7 @@ app.get("/cancel", (req, res) => res.status(200).send("Cancelled"))
 /**
  * Handle payouts
  */
-app.post('/payout', (req, res) => {
-	/**
-	 * Same batch ID cannot be used for payout. 
-	 * It should be defined by you to prevent duplicate batch from being sent.
-	 */
-	var sender_batch_id = (Math.random() * 0xfffff * 1000000000).toString(16).slice(0, 13).toUpperCase()	
+app.post('/payout', sendPayout)
+app.post('/get-payout', getPayout)
 
-	var create_payout_json = {
-			"sender_batch_header": {
-					"sender_batch_id": sender_batch_id,
-					"email_subject": "You have a payout for your sales"
-			},
-			"items": [
-					{
-							"recipient_type": "EMAIL",
-							"amount": {
-									"value": 2,
-									"currency": "USD"
-							},
-							"receiver": "sudipstha08@gmail.com",
-							"note": "Your sales has been paid",
-							/**
-							 * Sender_Item_id => The sender specified ID number. Tracks the payout in the accounting system
-							 */
-							"sender_item_id": "1346789987656"
-					}
-			]
-	};
-	
-	const sync_mode = 'false';
-	
-	paypal.payout.create(create_payout_json, sync_mode, function (error, payout) {
-			if (error) {
-					console.log(error.response);
-					res.status(400).send("Error occured")
-			} else {
-					console.log("Create Single Payout Response");
-					console.log(payout);
-					res.status(200).send({
-						data: payout
-					})
-			}
-	});
-})
-
-app.listen(PORT || 9000, () => console.log('Server started'))
+app.listen(PORT || 9000, () => console.log(`Server started at PORT: ${PORT}`))

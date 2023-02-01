@@ -1,5 +1,6 @@
 const express = require('express')
-const paypal = require('paypal-rest-sdk')
+const paypal = require('paypal-rest-sdk');
+const { sendPayout } = require('./controllers/index.ts');
 require('ejs')
 require('dotenv').config()
 
@@ -100,42 +101,6 @@ app.get("/cancel", (req, res) => res.status(200).send("Cancelled"))
 /**
  * Handle payouts
  */
-app.post('/payout', (req, res) => {
-	var sender_batch_id = Math.random().toString(36).substring(9);
+app.post('/payout', sendPayout)
 
-	var create_payout_json = {
-			"sender_batch_header": {
-					"sender_batch_id": sender_batch_id,
-					"email_subject": "You have a payment for your sales"
-			},
-			"items": [
-					{
-							"recipient_type": "EMAIL",
-							"amount": {
-									"value": 2,
-									"currency": "USD"
-							},
-							"receiver": "sb-je5vc24921338@personal.example.com",
-							"note": "Your sales has been paid",
-							"sender_item_id": "item_3"
-					}
-			]
-	};
-	
-	const sync_mode = 'false';
-	
-	paypal.payout.create(create_payout_json, sync_mode, function (error, payout) {
-			if (error) {
-					console.log(error.response);
-					res.status(400).send("Error occured", error)
-			} else {
-					console.log("Create Single Payout Response");
-					console.log(payout);
-					res.status(200).send({
-						data: payout
-					})
-			}
-	});
-})
-
-app.listen(PORT || 9000, () => console.log('Server started'))
+app.listen(PORT || 9000, () => console.log(`Server started at PORT: ${PORT}`))

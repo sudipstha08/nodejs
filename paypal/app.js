@@ -1,6 +1,6 @@
 const express = require('express')
 const paypal = require('paypal-rest-sdk');
-const { sendPayout } = require('./controllers/index.ts');
+const { sendPayout, getPayout } = require('./controllers/index.ts');
 require('ejs')
 require('dotenv').config()
 
@@ -102,5 +102,6 @@ app.get("/cancel", (req, res) => res.status(200).send("Cancelled"))
  * Handle payouts
  */
 app.post('/payout', sendPayout)
+app.post('/get-payout', getPayout)
 
 app.listen(PORT || 9000, () => console.log(`Server started at PORT: ${PORT}`))

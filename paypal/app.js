@@ -1,6 +1,6 @@
 const express = require('express')
 const paypal = require('paypal-rest-sdk');
-const { sendPayout, getPayout } = require('./controllers/index.ts');
+const { sendPayout, getPayout } = require('./controllers/index.js');
 require('ejs')
 require('dotenv').config()
 
@@ -11,7 +11,7 @@ paypal.configure({
 });
 
 const app = express()
-const PORT = 9000;
+const PORT = 9001;
 
 app.set('view engine', "ejs")
 

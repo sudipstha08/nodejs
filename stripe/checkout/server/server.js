@@ -77,7 +77,7 @@ app.post('/webhook', bodyParser.raw({type: 'application/json'}), async (request,
   let event;
 
   try {
-    event = await stripe.webhooks.constructEvent(payload, sig, "whsec_e06651b76a89c663adb0f784c2b795fdbfe934a634301f2fd890f086167e90c4");
+    event = await stripe.webhooks.constructEvent(payload, sig, process.env.STRIPE_WEBHOOK_SECRET);
  console.log("event====>",event)
 	} catch (err) {
 		console.log("erri", err)

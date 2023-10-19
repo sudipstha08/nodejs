@@ -1,10 +1,12 @@
 const button = document.querySelector("button");
+const clinetUrl = "http://localhost:2000"
 
 console.log("button",button)
 
 button.addEventListener("click", () => {
 	console.log("Checkout");
 	fetch("/create-checkout-session", {
+		 url: clinetUrl,
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

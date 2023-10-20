@@ -42,63 +42,64 @@ const storeItems = new Map([
 	],
 ]);
 
-app.post("/create-checkout-session", async (req, res) => {
-	try {
-		const session = await stripe.checkout.sessions.create({
-			payment_method_types: ["card"],
-			mode: 'payment',
-			line_items: req.body.items.map(item => {
-				const storeItem = storeItems.get(item.id)
-				return {
-					price_data: {
-						currency: 'usd',
-						product_data: {
-							name: storeItem.name
-						},
-						unit_amount: storeItem.priceInCents
-					},
-					quantity: item.quantity
-				}
-			}),
-			success_url: `${process.env.CLIENT_URL}/success.html`,
-			cancel_url: `${process.env.CLIENT_URL}/cancel.html`,
-		});
-		res.json({ url: session.url });
-	} catch (e) {
-		res.status(500).json({ error: e.message });
-	}
-});
-
 // app.post("/create-checkout-session", async (req, res) => {
 // 	try {
 // 		const session = await stripe.checkout.sessions.create({
 // 			payment_method_types: ["card"],
-// 			mode: "subscription",
-// 			metadata: {
-// 				subscription_type: "yearly",
-// 		 },
-// 		 subscription_data: {
-// 			metadata: {
-// 				subscription_type: "yearly",
-// 				customer_name: "micheal"
-// 			}
-// 		 },
-// 			line_items: [
-// 				{
-// 					price: "price_1O2tolIOsOcOqp0XPqjiFiIC",
-// 					quantity: 1,
-// 				},
-// 			],
-
+// 			mode: 'payment',
+// 			line_items: req.body.items.map(item => {
+// 				const storeItem = storeItems.get(item.id)
+// 				return {
+// 					price_data: {
+// 						currency: 'usd',
+// 						product_data: {
+// 							name: storeItem.name
+// 						},
+// 						unit_amount: storeItem.priceInCents
+// 					},
+// 					quantity: item.quantity
+// 				}
+// 			}),
 // 			success_url: `${process.env.CLIENT_URL}/success.html`,
 // 			cancel_url: `${process.env.CLIENT_URL}/cancel.html`,
 // 		});
 // 		res.json({ url: session.url });
 // 	} catch (e) {
-// 		console.log("errror", e)
 // 		res.status(500).json({ error: e.message });
 // 	}
 // });
+
+app.post("/create-checkout-session", async (req, res) => {
+	try {
+		const session = await stripe.checkout.sessions.create({
+			payment_method_types: ["card"],
+			mode: "subscription",
+			metadata: {
+				subscription_type: "yearly",
+		 },
+		 subscription_data: {
+			// cancel_at: "1729431433",
+			metadata: {
+				subscription_type: "yearly",
+				customer_name: "micheal"
+			}
+		 },
+			line_items: [
+				{
+					price: "price_1O2tolIOsOcOqp0XPqjiFiIC",
+					quantity: 1,
+				},
+			],
+
+			success_url: `${process.env.CLIENT_URL}/success.html`,
+			cancel_url: `${process.env.CLIENT_URL}/cancel.html`,
+		});
+		res.json({ url: session.url });
+	} catch (e) {
+		console.log("errror", e)
+		res.status(500).json({ error: e.message });
+	}
+});
 
 app.post(
 	"/webhook",
@@ -153,7 +154,7 @@ app.post(
 				// This approach helps you avoid hitting rate limits.
 				// console.log("event type===>", event.type);
 				// console.log("event type===>", event.data.object.subscription_details);
-				// console.log("evetn",event)
+				console.log("evetn",event)
 
 				break;
 			case "invoice.payment_failed":

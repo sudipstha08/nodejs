@@ -117,7 +117,8 @@ const handleOpenAi = async (req, res) => {
 	try {
 		const audioFile = req.file;
 
-		console.log("req", audioFile);
+		console.log("audioFile", audioFile);
+
 		const formData = new FormData();
 
 		const mimeType = audioFile.mimetype;

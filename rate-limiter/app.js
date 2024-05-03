@@ -1,7 +1,7 @@
 // const express = require('express')
 import express from "express";
 // const limiter = require("express-rate-limit");
-import { limiter } from "express-rate-limit";
+import limiter from "express-rate-limit";
 
 const app = express();
 

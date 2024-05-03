@@ -1,0 +1,1 @@
+## suports es6 modules due to ts-node compiler with ts configuration

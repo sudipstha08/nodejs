@@ -2,8 +2,11 @@
 import express from "express";
 // const limiter = require("express-rate-limit");
 import limiter from "express-rate-limit";
+import helmet from "helmet";
 
 const app = express();
+
+// app.use(helmet());
 
 /**
  * Apply rate limiter to all routes
@@ -18,6 +21,8 @@ const app = express();
 //       message: "Too many request"
 //    }
 // }))
+
+const PORT =process.env.PORT || 3000
 
 const registerLimiter = limiter({
 	windowMs: 5 * 60 * 1000,
@@ -40,4 +45,4 @@ app.get("/login", (req, res) => res.send("login page"));
 
 app.post("/login", (req, res) => res.send("OK"));
 
-app.listen(3000, () => console.log("Server on port 3000"));
+app.listen(PORT, () => console.log(`Server on PORT: ${PORT}`));

@@ -2,6 +2,19 @@
 - Sharding is a type of database partitioning that separates large databases into smaller, faster, more easily managed parts. These smaller parts are called data shards. The word shard means "a small part of a whole.
 - https://www.techtarget.com/searchoracle/definition/sharding#:~:text=Sharding%20is%20a%20type%20of,faster%2C%20more%20easily%20managed%20parts.
 
+## Databse View
+- A Database View is a virtual table that presents data from one or more tables in a structured and user-friendly format. Database Views are not physically stored in the database but are generated dynamically based on underlying data tables. 
+- They are widely used in query optimization, data access control, and data abstraction, enabling businesses to perform complex data analysis with ease.
+- Database Views are built on top of the underlying database management system (DBMS). They rely on SQL queries that define the logical structure and relationships between tables and columns. The DBMS takes care of maintaining the consistency between the views and the base tables, ensuring that the views always display the latest data.
+  
+Functionality and Features
+Database Views offer several key features:
+
+Data Abstraction: They simplify data access by providing a single interface for multiple tables or complex queries.
+Access Control: Database Views can be used to control access to sensitive data by restricting users to specific columns or rows.
+Modular Queries: They provide a more organized and modular approach to queries by encapsulating logic within the view definition.
+Query Optimization: Some databases can optimize query execution by using views to minimize the amount of data processed or retrieved.
+
 ## MongoDB & Postgres
 - Data Model:
   - MongoDB: MongoDB is a NoSQL database, which means it uses a flexible, document-based data model. Data is stored in JSON-like documents, allowing for nested structures and dynamic schemas.
@@ -53,5 +66,21 @@
   If possible, prototype your application with both PostgreSQL and MongoDB to evaluate how well each database meets your requirements.
   Test performance, scalability, ease of development, and maintenance overhead to make an informed decision.
 
+
+## SQL Injection attack
+- SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. 
+- This can allow an attacker to view data that they are not normally able to retrieve. This might include data that belongs to other users, or any other data that the application can access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
+- A successful SQL injection attack can result in unauthorized access to sensitive data, such as:
+  - Passwords.
+  - Credit card details.
+  - Personal user information.
+
+### How to prevent SQL injection ?
+- You can prevent most instances of SQL injection using parameterized queries instead of string concatenation within the query.
+- Allow-list Input Validation
+
 [References]
 - https://www.geeksforgeeks.org/introduction-of-object-oriented-programming/
+- https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+- https://www.datacamp.com/tutorial/views-in-sql
+- https://aristeksystems.com/blog/database-views-what-you-need-to-know/

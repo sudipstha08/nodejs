@@ -1,28 +1,28 @@
-// const express = require('express')
 import express from "express";
-// const limiter = require("express-rate-limit");
 import limiter from "express-rate-limit";
 import helmet from "helmet";
 
 const app = express();
 
-// app.use(helmet());
+app.use(helmet());
 
 /**
  * Apply rate limiter to all routes
  *
  **/
 
-// app.use(limiter({
-//    windowMs: 5000,
-//    max: 5,
-//    message:{
-//       code: 429,
-//       message: "Too many request"
-//    }
-// }))
+app.use(
+	limiter({
+		windowMs: 5000,
+		max: 5,
+		message: {
+			code: 429,
+			message: "Too many request",
+		},
+	})
+);
 
-const PORT =process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 const registerLimiter = limiter({
 	windowMs: 5 * 60 * 1000,

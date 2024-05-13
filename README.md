@@ -13,5 +13,7 @@
 - Supertest
 
 ## References
-1. https://www.prisma.io/docs/
+1. https://codedamn.com/news/nodejs/asynchronous-vs-synchronous-programming-in-node-js
+2. https://nodejs.org/en/learn/asynchronous-work/overview-of-blocking-vs-non-blocking
+3. https://nodejs.org/en/learn/asynchronous-work/overview-of-blocking-vs-non-blocking
 

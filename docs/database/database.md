@@ -67,17 +67,7 @@ Query Optimization: Some databases can optimize query execution by using views t
   Test performance, scalability, ease of development, and maintenance overhead to make an informed decision.
 
 
-## SQL Injection attack
-- SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. 
-- This can allow an attacker to view data that they are not normally able to retrieve. This might include data that belongs to other users, or any other data that the application can access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
-- A successful SQL injection attack can result in unauthorized access to sensitive data, such as:
-  - Passwords.
-  - Credit card details.
-  - Personal user information.
 
-### How to prevent SQL injection ?
-- You can prevent most instances of SQL injection using parameterized queries instead of string concatenation within the query.
-- Allow-list Input Validation
 
 [References]
 - https://www.geeksforgeeks.org/introduction-of-object-oriented-programming/

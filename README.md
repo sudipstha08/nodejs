@@ -8,9 +8,7 @@
 - npx prisma migrate dev --name init
 ```
 
-## Testing 
-- Jest
-- Supertest
+
 
 ## References
 1. https://codedamn.com/news/nodejs/asynchronous-vs-synchronous-programming-in-node-js

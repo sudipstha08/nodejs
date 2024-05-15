@@ -24,11 +24,23 @@
 - From a high level, a DDoS attack is like an unexpected traffic jam clogging up the highway, preventing regular traffic from arriving at its destination.
 - The most obvious symptom of a DDoS attack is a site or service suddenly becoming slow or unavailable. But since a number of causes — such a legitimate spike in traffic — can create similar performance issues, further investigation is usually required. 
 
+## SQL Injection attack
+- SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. 
+- This can allow an attacker to view data that they are not normally able to retrieve. This might include data that belongs to other users, or any other data that the application can access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
+- A successful SQL injection attack can result in unauthorized access to sensitive data, such as:
+  - Passwords.
+  - Credit card details.
+  - Personal user information.
+
+### How to prevent SQL injection ?
+- You can prevent most instances of SQL injection using parameterized queries instead of string concatenation within the query.
+- Allow-list Input Validation
+
 
 ### NodeJS Security Best practices
 - Rate Limiting
   - eg `express-rate-limit` with nginx | aws rate limiter
-- Passoword encryption
+- Password encryption
   - eg `bcrypt`
 - JWT blacklisting
 - JSON schema validation

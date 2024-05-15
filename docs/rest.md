@@ -1,6 +1,6 @@
 ## REST
 
-- REST (Representational State Transfer) is an architectural style for designing networked applications. It is based on a set of principles that describe how resources are defined and addressed, and how interactions are performed between clients and servers over HTTP.
+- `REST (Representational State Transfer)` is an architectural style for designing networked applications. It is based on a set of principles that describe how resources are defined and addressed, and how interactions are performed between clients and servers over HTTP.
 
 Here are the key principles of REST:
 

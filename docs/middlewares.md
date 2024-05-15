@@ -1,18 +1,20 @@
-Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named next.
+## Middlewares
 
-Middleware functions can perform the following tasks:
+- Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. The next middleware function is commonly denoted by a variable named `next`.
 
-Execute any code.
-Make changes to the request and the response objects.
-End the request-response cycle.
-Call the next middleware function in the stack.
+- Middleware functions can perform the following tasks:
 
-An Express application can use the following types of middleware:
+  - Execute any code.
+  - Make changes to the request and the response objects.
+  - End the request-response cycle.
+  - Call the next middleware function in the stack.
 
-Application-level middleware
-Router-level middleware
-Error-handling middleware
-Built-in middleware
-Third-party middleware
+### An Express application can use the following types of middleware:
+
+- Application-level middleware
+- Router-level middleware
+- Error-handling middleware
+- Built-in middleware
+- Third-party middleware
 
 https://expressjs.com/en/guide/using-middleware.html#middleware.router

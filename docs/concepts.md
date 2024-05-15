@@ -6,7 +6,8 @@
 - `POST` method is non-idempotent as making the same POST request multiple times can result in different outcomes or create multiple instances of submitted data.
 
 ## PATCH
-- PATCH is an HTTP method used for partially updating resources on a server. Unlike PUT, which typically requires the client to send a complete representation of the resource, PATCH allows clients to send only the changes that need to be applied. This makes it more efficient for updating specific attributes or elements of a resource without affecting the rest of the data. The idempotency of PATCH depends on the implementation and the semantics of the operation.
+- `PATCH` is an HTTP method used for partially updating resources on a server. Unlike PUT, which typically requires the client to send a complete representation of the resource, PATCH allows clients to send only the changes that need to be applied. 
+- This makes it more efficient for updating specific attributes or elements of a resource without affecting the rest of the data. The idempotency of PATCH depends on the implementation and the semantics of the operation.
 
 
 [REFERENCES]

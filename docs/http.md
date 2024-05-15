@@ -48,7 +48,7 @@ The PATCH method applies partial modifications to a resource.
   - Client error responses (400 – 499)
   - Server error responses (500 – 599)
 
-Commonly used status code
+#### Commonly used status code
 - `200 OK`: The request has succeeded. The client's request was valid, and the server responded with the requested resource.
 - `201 Created`: The request has been fulfilled, resulting in the creation of a new resource.
 - `204 No Content`: The server successfully processed the request, but there is no content to return.

@@ -1,6 +1,6 @@
 ## Caching
 
-- a cache is a hardware or software component that stores data temporarily to reduce access time and improve performance. Caches are used to store frequently accessed or recently used data closer to the CPU or other processing units, thereby reducing the time required to retrieve the data from slower storage devices, such as RAM or disk.
+- A cache is a hardware or software component that stores data temporarily to reduce access time and improve performance. Caches are used to store frequently accessed or recently used data closer to the CPU or other processing units, thereby reducing the time required to retrieve the data from slower storage devices, such as RAM or disk.
 - Caches operate on the principle of locality, which refers to the tendency of programs to access the same data or instructions repeatedly or to access nearby data within a short period of time. By storing frequently accessed data in a cache, subsequent accesses to that data can be served more quickly, as the data is readily available in the cache.
 
 Types of cache
